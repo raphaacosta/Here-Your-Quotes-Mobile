@@ -1,8 +1,11 @@
-import React from 'react';
-import { ScrollView, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { ScrollView, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-import { FontAwesome as Icon, MaterialCommunityIcons as ListIcon } from '@expo/vector-icons';
+import { 
+  FontAwesome as Icon, 
+  MaterialCommunityIcons as ListIcon 
+} from '@expo/vector-icons';
 
 import { 
   Container, 
@@ -19,7 +22,17 @@ import {
 } from './styles';
 
 const List: React.FC = () => {
+  const [opacity] = useState(new Animated.Value(0));
+
   const navigation = useNavigation();
+
+  useEffect(() => {
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 900,
+      useNativeDriver: true,
+    }).start();
+  },[]);
 
   const handleLogOff = () => {
     navigation.navigate('Login');
@@ -50,7 +63,12 @@ const List: React.FC = () => {
       </Header>
       <Container>
         <Information>Aqui estão suas frases <UserName>Usuário</UserName></Information>
-        <ScrollView>
+        <Animated.ScrollView 
+          showsVerticalScrollIndicator={false} 
+          style={{
+            opacity: opacity,
+          }}
+        >
           <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
             <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
               Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
@@ -140,7 +158,7 @@ const List: React.FC = () => {
             <QuoteBar />
             <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
-        </ScrollView>
+        </Animated.ScrollView>
       </Container>
     </>
   );

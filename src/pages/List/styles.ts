@@ -13,7 +13,6 @@ export const Header = styled.View`
   background-color: #8F3985;
   
   align-items: center;
-  /* Moto G PLAY = width: 360; x height: 640; */
 `;
 
 export const HeaderIcon = styled.TouchableOpacity`
@@ -21,7 +20,6 @@ export const HeaderIcon = styled.TouchableOpacity`
   width: 40px;
   justify-content: center;
   align-items: center;
-  /* background-color: rgba(0,0,0,0.1); */
 `;
 
 export const HeaderBar = styled.View`
