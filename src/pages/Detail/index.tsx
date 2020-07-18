@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { Alert } from 'react-native';
 
 import { FontAwesome5 as TrashIcon, FontAwesome as Icon } from '@expo/vector-icons';
 
@@ -28,6 +29,20 @@ const Detail: React.FC = () => {
     navigation.navigate('Login');
   }
 
+  const AlertMessage = () => {
+    Alert.alert("Atenção", "Deseja deletar essa frase?", [
+      {
+        text: "Cancelar",
+        onPress: () => console.log('Cancel pressed'),
+      },
+      {
+        text: "Ok",
+        onPress: () => console.log('Ok pressed'),
+      }
+    ],
+    { cancelable: false});
+  }
+
   return (
     <>
       <Header>
@@ -43,7 +58,7 @@ const Detail: React.FC = () => {
       </Header>
       <Container>
         <QuoteBox>
-          <QuoteIcon>
+          <QuoteIcon onPress={AlertMessage}>
             <TrashIcon name="trash" size={16} color="#A675A1"/>
           </QuoteIcon>
           <QuoteContent>
