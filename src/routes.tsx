@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import List from './pages/List';
 import Detail from './pages/Detail';
+import CreateQuote from './pages/CreateQuote';
 
 const AppStack = createStackNavigator();
 
@@ -25,6 +26,7 @@ const Routes: React.FC = () => {
         <AppStack.Screen name="Register" component={Register}/>
         <AppStack.Screen name="List" component={List}/>
         <AppStack.Screen name="Detail" component={Detail}/>
+        <AppStack.Screen name="CreateQuote" component={CreateQuote}/>
       </AppStack.Navigator>
     </NavigationContainer>
       );
