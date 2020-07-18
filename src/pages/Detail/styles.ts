@@ -11,7 +11,7 @@ export const Header = styled.View`
   margin-top: 22px;
   flex-direction: row;
   background-color: #8F3985;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   align-items: center;
 `;
 
@@ -24,6 +24,8 @@ export const HeaderIcon = styled.TouchableOpacity`
 `;
 
 export const HeaderText = styled.Text`
+  flex: 1;
+  text-align: center;
   font-size: 20px;
   color: #F5E7E0;
 `;
