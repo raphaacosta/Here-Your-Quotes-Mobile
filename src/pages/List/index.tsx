@@ -25,6 +25,9 @@ const List: React.FC = () => {
     navigation.navigate('Login');
   }
 
+  const handleNavigateToDetail = () => {
+    navigation.navigate('Detail');
+  }
   return(
     <>
       <Header>
@@ -43,7 +46,7 @@ const List: React.FC = () => {
       <Container>
         <Information>Aqui estão suas frases <UserName>Usuário</UserName></Information>
         <ScrollView>
-          <QuoteBox activeOpacity={0.7}>
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
             <QuoteContent>
               Não importa onde você começa, só importa onde você termina
             </QuoteContent>
