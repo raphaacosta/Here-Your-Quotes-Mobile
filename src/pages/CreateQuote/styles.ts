@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Animated } from 'react-native';
 
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
@@ -38,7 +39,7 @@ export const HeaderSeparator = styled.View`
   margin: 0 13px;
 `;
 
-export const QuoteBox = styled.View`
+export const QuoteBox = styled(Animated.View)`
   width: 100%;
   align-items: center;
   margin-top: 10px;
@@ -83,7 +84,7 @@ export const QuoteSeparator = styled.View`
   margin: 10px;
 `;
 
-export const AuthorInputBox = styled.View`
+export const AuthorInputBox = styled(Animated.View)`
   width: 100%;
   height: 60px;
   background-color: #F5E7E0;
@@ -106,7 +107,7 @@ export const QuoteAuthor = styled.TextInput`
   color: #25283D;
 `;
 
-export const ComplementInputBox = styled.View`
+export const ComplementInputBox = styled(Animated.View)`
   width: 100%;
   border-bottom-left-radius: 8px;
   border-bottom-right-radius: 8px;

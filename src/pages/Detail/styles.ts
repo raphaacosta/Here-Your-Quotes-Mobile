@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Animated } from 'react-native';
 
 export const Container = styled.View`
   flex: 1;
@@ -11,7 +12,6 @@ export const Header = styled.View`
   margin-top: 22px;
   flex-direction: row;
   background-color: #8F3985;
-  /* justify-content: space-between; */
   align-items: center;
 `;
 
@@ -39,7 +39,7 @@ export const HeaderSeparator = styled.View`
   margin: 0 13px;
 `;
 
-export const QuoteBox = styled.View`
+export const QuoteBox = styled(Animated.View)`
   width: 100%;
   height: 230px;
   margin-top: 10px;

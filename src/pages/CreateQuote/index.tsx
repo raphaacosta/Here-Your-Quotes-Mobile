@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Alert } from 'react-native';
+import { View, Alert, Animated } from 'react-native';
 
 import { FontAwesome as Icon, MaterialIcons as DoneIcon } from '@expo/vector-icons';
 
@@ -12,8 +12,7 @@ import {
   HeaderText, 
   QuoteBox, 
   TextAreaBox, 
-  QuoteContent, 
-  QuoteContentBox, 
+  QuoteContent,  
   QuoteSeparator, 
   AuthorInputBox, 
   QuoteSubInput, 
@@ -23,7 +22,17 @@ import {
 } from './styles';
 
 const CreateQuote = () => {
+  const [opacity] = useState(new Animated.Value(0));
+  
   const navigation = useNavigation();
+
+  useEffect(() => {
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 900,
+      useNativeDriver: true,
+    }).start();
+  },[]);
 
   const handleNavigateBack = () => {
     navigation.goBack();
@@ -50,20 +59,20 @@ const CreateQuote = () => {
         </HeaderIcon>
       </Header>
       <Container>
-        <QuoteBox>
+        <QuoteBox style={{ opacity: opacity}}>
           <TextAreaBox>
             <QuoteContent multiline={true} placeholder="Digite uma frase..." />
           </TextAreaBox>
           <QuoteSeparator />
         </QuoteBox>
-        <AuthorInputBox>
+        <AuthorInputBox style={{ opacity: opacity}}>
           <QuoteSubInput>
             <QuoteAuthor placeholder="Digite um autor..."/>
           </QuoteSubInput>
           <QuoteSeparator />
         </AuthorInputBox>
-        <ComplementInputBox>
-          <QuoteSubInput> 
+        <ComplementInputBox style={{ opacity: opacity}}>
+          <QuoteSubInput>
             <QuoteComplement placeholder="Digite um complemento..."/>
           </QuoteSubInput>
         </ComplementInputBox>

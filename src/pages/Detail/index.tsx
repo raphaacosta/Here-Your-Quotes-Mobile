@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { Alert } from 'react-native';
+import { Alert, Animated } from 'react-native';
 
 import { FontAwesome5 as TrashIcon, FontAwesome as Icon } from '@expo/vector-icons';
 
@@ -19,7 +19,17 @@ import {
 } from './styles';
 
 const Detail: React.FC = () => {
+  const [opacity] = useState(new Animated.Value(0));
+
   const navigation = useNavigation();
+
+  useEffect(() => {
+    Animated.timing(opacity, {
+      toValue: 1,
+      duration: 900,
+      useNativeDriver: true,
+    }).start();
+  },[]);
 
   const handleNavigateBack = () => {
     navigation.goBack();
@@ -57,7 +67,7 @@ const Detail: React.FC = () => {
         </HeaderIcon>
       </Header>
       <Container>
-        <QuoteBox>
+        <QuoteBox style={{ opacity: opacity}}>
           <QuoteIcon onPress={AlertMessage}>
             <TrashIcon name="trash" size={16} color="#A675A1"/>
           </QuoteIcon>
