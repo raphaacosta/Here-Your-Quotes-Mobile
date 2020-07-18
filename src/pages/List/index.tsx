@@ -28,10 +28,15 @@ const List: React.FC = () => {
   const handleNavigateToDetail = () => {
     navigation.navigate('Detail');
   }
+
+  const handleNavigateToCreateQuote = () => {
+    navigation.navigate('CreateQuote');
+  }
+
   return(
     <>
       <Header>
-        <HeaderIcon>
+        <HeaderIcon onPress={handleNavigateToCreateQuote}>
           <ListIcon name="playlist-plus" size={24} color="#EFD9CE"/>
         </HeaderIcon>
         
@@ -47,99 +52,93 @@ const List: React.FC = () => {
         <Information>Aqui estão suas frases <UserName>Usuário</UserName></Information>
         <ScrollView>
           <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
 
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
+          <QuoteBox activeOpacity={0.7} onPress={handleNavigateToDetail}>
+            <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+              Eu amo uma mulher, mas não irei obrigá-la a me amar. Vou cercá-la com
+              todo o meu amor enquanto rezo por sua felicidade.
             </QuoteContent>
             <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
-          </QuoteBox>
-
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
-            </QuoteContent>
-            <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
-          </QuoteBox>
-
-          <QuoteBox activeOpacity={0.7}>
-            <QuoteContent>
-              Não importa onde você começa, só importa onde você termina
-            </QuoteContent>
-            <QuoteBar />
-            <QuoteAuthor>Felipe Deschamps</QuoteAuthor>
+            <QuoteAuthor>Jiraya</QuoteAuthor>
           </QuoteBox>
         </ScrollView>
       </Container>

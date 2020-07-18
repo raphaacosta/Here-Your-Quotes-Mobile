@@ -11,17 +11,17 @@ export const Header = styled.View`
   margin-top: 22px;
   flex-direction: row;
   background-color: #8F3985;
-  justify-content: center;
+  
   align-items: center;
   /* Moto G PLAY = width: 360; x height: 640; */
 `;
 
 export const HeaderIcon = styled.TouchableOpacity`
-  height: 40px;
+  height: 90%;
   width: 40px;
-  border-radius: 8px;
   justify-content: center;
   align-items: center;
+  /* background-color: rgba(0,0,0,0.1); */
 `;
 
 export const HeaderBar = styled.View`
@@ -30,11 +30,11 @@ export const HeaderBar = styled.View`
   border-radius: 8px;
   background-color: #A675A1;
   opacity: 0.4;
-  margin: 0 13px;
+  margin: 0 10px;
 `;
 
 export const HeaderInput = styled.TextInput`
-  width: 180px;
+  flex: 1;
   font-size: 16px;
   padding: 0 10px;
   border-radius: 8px;
