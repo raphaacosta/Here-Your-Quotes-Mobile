@@ -70,7 +70,8 @@ export const Button = styled(RectButton)`
 export const ButtonIcon = styled.View`
   height: 50px;
   width: 50px;
-  border-radius: 8px;
+  border-bottom-left-radius: 8px;
+  border-top-left-radius: 8px;
   background: rgba(0, 0, 0, 0.1);
   justify-content: center;
   align-items: center;
