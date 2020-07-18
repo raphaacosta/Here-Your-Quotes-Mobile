@@ -1,5 +1,5 @@
-import React from 'react';
-import { Image, KeyboardAvoidingView, Platform,  } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { Image, Platform, Animated, Keyboard } from 'react-native';
 import { FontAwesome as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
@@ -18,7 +18,53 @@ import {
 } from './styles';
 
 const Login: React.FC = () => {
+  const [offset] = useState(new Animated.ValueXY({x: 0, y: 80}));
+  const [opacity] = useState(new Animated.Value(0));
+  const [imgOpacity] = useState(new Animated.Value(1));
+
   const navigation = useNavigation();
+  
+  useEffect(() => {
+    Keyboard.addListener("keyboardDidShow", keyboardDidShow);
+    Keyboard.addListener("keyboardDidHide", keyboardDidHide);
+
+    return () => {
+      Keyboard.removeListener("keyboardDidShow", keyboardDidShow);
+      Keyboard.removeListener("keyboardDidHide", keyboardDidHide);
+    };
+  },[]);
+
+  useEffect(() => {
+    Animated.parallel([
+      Animated.spring(offset.y, {
+        toValue: 0,
+        speed: 4,
+        bounciness: 30,
+        useNativeDriver: true,
+      }),
+      Animated.timing(opacity, {
+        toValue: 1,
+        duration: 900,
+        useNativeDriver: true,
+      })
+    ]).start();
+  },[]);
+
+  const keyboardDidShow = () => {
+    Animated.timing(imgOpacity, {
+      toValue: 0,
+      duration: 200,
+      useNativeDriver: true,
+    }).start();
+  };
+
+  const keyboardDidHide = () => {
+    Animated.timing(imgOpacity, {
+      toValue: 1,
+      duration: 500,
+      useNativeDriver: true,
+    }).start();
+  };
 
   const handleNavigateToList = () => {
     navigation.navigate('List');
@@ -29,12 +75,18 @@ const Login: React.FC = () => {
   }
 
   return (
-    <KeyboardAvoidingView  style={{ flex: 1, }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
-      <Container>
+      <Container style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <ImgContainer>
-          <Image source={logo}/>
+          <Animated.Image source={logo} style={{
+            opacity: imgOpacity,
+          }}/>
         </ImgContainer>
-        <InputContainer>
+        <InputContainer style={{
+          opacity: opacity,
+          transform: [
+            { translateY: offset.y }
+          ]
+        }}>
           <Input placeholder=" Email" autoCorrect={false} >
             
           </Input>
@@ -53,7 +105,6 @@ const Login: React.FC = () => {
           </NewUserContainer>
         </InputContainer>
       </Container>
-    </KeyboardAvoidingView>
   );
 }
 

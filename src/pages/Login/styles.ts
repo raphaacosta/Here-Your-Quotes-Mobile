@@ -3,7 +3,7 @@ import { Animated } from 'react-native';
 import { RectButton } from 'react-native-gesture-handler';
 import Constants from 'expo-constants';
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   padding: 0 20px;
   padding-top: ${Constants.statusBarHeight + 10}px;
