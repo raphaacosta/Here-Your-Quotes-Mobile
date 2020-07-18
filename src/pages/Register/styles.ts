@@ -1,6 +1,7 @@
 import styled from 'styled-components/native';
 import Constants from 'expo-constants';
 import { RectButton } from 'react-native-gesture-handler';
+import { Animated } from 'react-native';
 
 export const Container = styled.KeyboardAvoidingView`
   flex: 1;
@@ -34,14 +35,7 @@ export const HeaderIcon = styled.TouchableOpacity`
   align-items: center;
 `;
 
-export const ImgContainer = styled.View`
-  flex: 1;
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const InputContainer = styled.View`
+export const InputContainer = styled(Animated.View)`
   flex: 1;
   align-items: center;
   justify-content: center;
