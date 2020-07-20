@@ -68,7 +68,6 @@ const Register: React.FC = () => {
           email,
           password,
         });
-        console.log(response);
         
         Alert.alert("Sucesso", "Usuário criado", [{
           text: "Ok",
