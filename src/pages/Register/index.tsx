@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Alert, Platform, Animated } from 'react-native';
 import { FontAwesome as Icon } from '@expo/vector-icons';
+import api from '../../services/api';
 
 import { useNavigation } from '@react-navigation/native';
 
@@ -17,6 +18,10 @@ import {
 } from './styles';
 
 const Register: React.FC = () => {
+  const [username, setUsername] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+
   const [offset] = useState(new Animated.ValueXY({x: 0, y:90}));
   const [opacity] = useState(new Animated.Value(0));
 
@@ -42,11 +47,41 @@ const Register: React.FC = () => {
     navigation.goBack();
   }
 
-  const AlertMessage = () => {
-    Alert.alert("Message", "Usuário criado", [{
-      text: "Ok",
-      onPress: handleNavigateLogin,
-    }]);
+  const handleRegister = async () => {
+    const data = {
+      username,
+      email,
+      password,
+    };
+
+    if(!username || !email || !password) {
+      Alert.alert("Erro", "Preencha todos os campos", [{
+        text: "Ok",
+        onPress: () => {},
+      }]);
+    }
+    else {
+      try {
+      
+        const response = await api.post('users_create', {
+          username,
+          email,
+          password,
+        });
+        console.log(response);
+        
+        Alert.alert("Sucesso", "Usuário criado", [{
+          text: "Ok",
+          onPress: handleNavigateLogin,
+        }]);
+      } catch (err) {
+        console.log(err);
+        return Alert.alert("Erro", "Erro ao criar usuário", [{
+          text: "Ok",
+          onPress: () => {},
+        }]);
+      }
+    }
   }
 
   return (
@@ -66,10 +101,24 @@ const Register: React.FC = () => {
             ]
           }}
         >
-          <Input placeholder="username"/>
-          <Input placeholder="email"/>
-          <Input placeholder="password" secureTextEntry={true}/>
-          <Button onPress={AlertMessage}>
+          <Input 
+            placeholder="username" 
+            value={username} 
+            onChangeText={setUsername}
+          />
+          <Input 
+            placeholder="email" 
+            value={email} 
+            onChangeText={setEmail} 
+            keyboardType="email-address"
+          />
+          <Input 
+            placeholder="password" 
+            secureTextEntry={true} 
+            value={password} 
+            onChangeText={setPassword}
+          />
+          <Button onPress={handleRegister}>
             <ButtonIcon>
               <Icon name="user-plus" color="#EFD9CE" size={24}/>
             </ButtonIcon>
