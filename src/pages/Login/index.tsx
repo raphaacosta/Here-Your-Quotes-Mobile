@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Platform, Animated, Keyboard, Alert } from 'react-native';
 import { FontAwesome as Icon } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
-import * as SecureStore from 'expo-secure-store';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import api from '../../services/api';
 
@@ -73,8 +73,12 @@ const Login: React.FC = () => {
           password,
         });
 
-        SecureStore.setItemAsync('id', String(response.data.id));
-        SecureStore.setItemAsync('username', response.data.username);
+        await api.post('sessions', {
+          id: response.data.id,
+        });
+
+        await AsyncStorage.setItem('userId', String(response.data.id));
+        await AsyncStorage.setItem('userName', response.data.username);
 
         handleNavigateToList();
       } catch (err) {
