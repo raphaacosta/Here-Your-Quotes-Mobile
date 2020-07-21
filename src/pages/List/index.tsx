@@ -72,8 +72,8 @@ const List: React.FC = () => {
     navigation.navigate('Login');
   }
 
-  const handleNavigateToDetail = (quote: Quote) => {
-    navigation.navigate('Detail', { quote });
+  const handleNavigateToDetail = (id: number) => {
+    navigation.navigate('Detail', { id });
   }
 
   const handleNavigateToCreateQuote = () => {
@@ -107,7 +107,7 @@ const List: React.FC = () => {
             <QuoteBox 
               key={quotes.id}
               activeOpacity={0.7} 
-              onPress={() => handleNavigateToDetail(quotes)}>
+              onPress={() => handleNavigateToDetail(quotes.id)}>
               <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
                 {quotes.content}
               </QuoteContent>
