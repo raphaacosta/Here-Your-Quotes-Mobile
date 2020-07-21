@@ -41,9 +41,10 @@ export const HeaderSeparator = styled.View`
 
 export const QuoteBox = styled(Animated.View)`
   width: 100%;
-  height: 230px;
+  align-items: center;
   margin-top: 10px;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   background-color: #F5E7E0;
 `;
 
@@ -59,15 +60,18 @@ export const QuoteContentBox = styled.View`
   height: 150px;
 `;
 
-export const QuoteContent = styled.Text`
+export const TextAreaBox = styled.View`
   padding: 0 10px;
   margin-top: 10px;
-  margin-bottom: 10px;
-  text-align: justify;
-  align-items: center;
-  justify-content: center;
+  width: 90%;
+  overflow: hidden;
+`;
+
+export const QuoteContent = styled.TextInput`
+  width: 100%;
   font-size: 16px;
   color: #25283D;
+  text-align: justify;
 `;
 
 export const QuoteSeparator = styled.View`
@@ -77,23 +81,43 @@ export const QuoteSeparator = styled.View`
   border-radius: 8px;
   background-color: #A675A1;
   opacity: 0.4;
-  margin: 0 13px;
+  margin: 10px;
 `;
 
-export const QuoteAuthor = styled.Text`
-  align-items: center;
+export const AuthorInputBox = styled(Animated.View)`
+  width: 100%;
+  height: 60px;
+  background-color: #F5E7E0;
+`;
+
+export const QuoteSubInput = styled.View`
+  height: 40px;
+  padding: 10px;
+  margin-top: 5px;
+  width: 90%;
+  font-size: 16px;
+  color: #25283D;
+`;
+
+export const QuoteAuthor = styled.TextInput`
   padding: 0 10px;
-  margin-top: 10px;
-  margin-bottom: 5px;
+  height: 90%;
+  width: 100%;
   font-weight: bold;
   color: #25283D;
 `;
 
-export const QuoteDescription = styled.Text`
+export const ComplementInputBox = styled(Animated.View)`
+  width: 100%;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  background-color: #F5E7E0;
+`;
+
+export const QuoteComplement = styled.TextInput`
   padding: 0 10px;
-  margin-top: 10px;
-  margin-bottom: 5px;
-  align-items: center;
+  height: 90%;
+  width: 100%;
   font-size: 16px;
   color: #25283D;
 `;
