@@ -4,7 +4,6 @@ import { Alert, Animated } from 'react-native';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
 
-
 import { 
   FontAwesome5 as TrashIcon, 
   FontAwesome as Icon, 
@@ -68,7 +67,6 @@ const Detail: React.FC = () => {
         }]);
       }
     }
-    
     loadQuote();
   },[]);
 
@@ -89,14 +87,12 @@ const Detail: React.FC = () => {
     
     try {
       await api.put(`quotes/${routeParams.id}`, {
+        user_id: userId,
         content,
         author,
         complement,
-        headers: {
-          Authorization: userId,
-        },
       });
-      Alert.alert("All right", "Frase editada com sucesso", [{
+      Alert.alert("Prontinho :3", "Frase editada com sucesso", [{
         text: "Ok",
         onPress: () => {
           navigation.goBack();
@@ -125,18 +121,11 @@ const Detail: React.FC = () => {
                 Authorization: userId,
               }
             });
-
-            Alert.alert("Ah que pena :c", "Frase deletada com sucesso!", [{
-              text: "Ok",
-              onPress: () => {
-                navigation.goBack();
-              }
-            }])
           } catch(err) { 
             console.log(err)
             Alert.alert("Erro", "Erro ao deletar frase");
           }
-          navigation.goBack();
+          navigation.navigate('List');
         },
       }
     ],
@@ -177,7 +166,7 @@ const Detail: React.FC = () => {
             <QuoteComplement value={complement} onChangeText={setComplement}/>
           </QuoteSubInput>
         </ComplementInputBox>
-      </Container>          
+      </Container>
     </>
   );
 }
