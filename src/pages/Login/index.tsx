@@ -99,7 +99,7 @@ const Login: React.FC = () => {
   const keyboardDidHide = () => {
     Animated.timing(imgOpacity, {
       toValue: 1,
-      duration: 500,
+      duration: 200,
       useNativeDriver: true,
     }).start();
   };
