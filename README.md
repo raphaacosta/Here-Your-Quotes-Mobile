@@ -2,7 +2,8 @@
   <img alt="Here Your Quotes" src="./assets/Logo.png"/>
 </h1>
 <h4 align="center">
-    see the server here -> <a source="https://github.com/raphaacosta/Here-Your-Quotes-API">back-end</a>
+    see the server here
+    <a source="https://github.com/raphaacosta/Here-Your-Quotes-API">back-end</a>
 </h4>
 
 # About project
