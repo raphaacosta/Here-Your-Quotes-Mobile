@@ -2,8 +2,9 @@
   <img alt="Here Your Quotes" src="./assets/Logo.png"/>
 </h1>
 <h4 align="center">
-    see the server here
-    <a source="https://github.com/raphaacosta/Here-Your-Quotes-API">back-end</a>
+    <a href="https://github.com/raphaacosta/Here-Your-Quotes-API">
+      <img alt="Go to API" src="https://img.shields.io/badge/Go%20to-API-blueviolet">
+    </a>
 </h4>
 
 # About project
