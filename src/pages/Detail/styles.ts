@@ -26,6 +26,7 @@ export const HeaderIcon = styled.TouchableOpacity`
 export const HeaderText = styled.Text`
   flex: 1;
   text-align: center;
+  font-weight: bold;
   font-size: 20px;
   color: #F5E7E0;
 `;

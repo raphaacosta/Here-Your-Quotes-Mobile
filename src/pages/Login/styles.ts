@@ -15,7 +15,6 @@ export const ImgContainer = styled.View`
   /* background-color: #FFF; */
   width: 100%;
   margin-top: -100px;
-  height: 180px;
   align-items: center;
   justify-content: center;
 `;
@@ -23,7 +22,8 @@ export const ImgContainer = styled.View`
 export const InputContainer = styled(Animated.View)`
   /* background-color: #000; */
   flex: 1;
-  margin-top: -150px;
+  width: 100%;
+  margin-top: -250px;
   height: 250px;
   align-items: center;
   justify-content: center;
@@ -70,15 +70,14 @@ export const ButtonIcon = styled.View`
 `;
 
 export const NewUserContainer = styled.TouchableOpacity`
+  align-self: flex-start;
+  left: 10px;
   margin-top: 10px;
-  left: -50px;
-  align-items: center;
   flex-direction: row;
 `;
 
 export const NewUserText = styled.Text`
   margin-left: 8px;
-  text-align: justify;
   font-size: 16px;
   color: #8F3985;
 `;
