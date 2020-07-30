@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Alert, Animated } from 'react-native';
+import React, { useState, useEffect, useCallback } from 'react';
+import { RefreshControl, Animated } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
-
 
 import { 
   FontAwesome as Icon, 
@@ -34,14 +33,13 @@ interface Quote{
 const List: React.FC = () => {
   const [quote, setQuote] = useState<Quote[]>([]);
   const [username, setUsername] = useState<string>('');
-  const [loading, setLoading] = useState<boolean>(false);
   const [page, setPage] = useState<number>(0);
+  const [isRefreshing, setIsRefreshing] = useState(false);
 
   const [opacity] = useState(new Animated.Value(0));
   const navigation = useNavigation();
 
   useEffect(() => {
-    setLoading(true);
     loadQuotes();
   },[]);
 
@@ -52,6 +50,12 @@ const List: React.FC = () => {
       useNativeDriver: true,
     }).start();
   },[]);
+
+  const onRefresh = useCallback(() => {
+    setIsRefreshing(true);
+    loadQuotes();
+    setIsRefreshing(false);
+  }, [isRefreshing]);
 
   const loadQuotes = async () => {
     const userId = await AsyncStorage.getItem('userId');
@@ -65,9 +69,8 @@ const List: React.FC = () => {
       setUsername(String(userName));
       setQuote(response.data);
       setPage(page + 1);
-      setLoading(false);  
   }
-
+  
   const handleLogOff = () => {
     navigation.navigate('Login');
   }
@@ -95,28 +98,36 @@ const List: React.FC = () => {
           <Icon name="power-off" size={24} color="#EFD9CE"/>
         </HeaderIcon>
       </Header>
-      <Container>
-        <Information>Aqui estão suas frases <UserName>{username}</UserName></Information>
-        <Animated.ScrollView 
-          showsVerticalScrollIndicator={false} 
-          style={{
-            opacity: opacity,
-          }}
-        >
-          {quote.map(quotes => (
-            <QuoteBox 
-              key={quotes.id}
-              activeOpacity={0.7} 
-              onPress={() => handleNavigateToDetail(quotes.id)}>
-              <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
-                {quotes.content}
-              </QuoteContent>
-              <QuoteBar />
-              <QuoteAuthor>{quotes.author}</QuoteAuthor>
-            </QuoteBox>
-          ))}
-        </Animated.ScrollView>
-      </Container>
+        <Container>
+          <Information>Aqui estão suas frases <UserName>{username}</UserName></Information>
+          <Animated.ScrollView 
+            showsVerticalScrollIndicator={false} 
+            style={{
+              opacity: opacity,
+            }}
+            refreshControl={
+              <RefreshControl 
+                refreshing={isRefreshing}
+                onRefresh={onRefresh}
+              />
+            }
+          >
+            {quote.map(quotes => (
+              <QuoteBox 
+                key={quotes.id}
+                activeOpacity={0.7} 
+                onPress={() => handleNavigateToDetail(quotes.id)}>
+                <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+                  {quotes.content}
+                </QuoteContent>
+                <QuoteBar />
+                <QuoteAuthor>{quotes.author}</QuoteAuthor>
+                <QuoteBar />
+                <QuoteAuthor>{quotes.complement}</QuoteAuthor>
+              </QuoteBox>
+            ))}
+          </Animated.ScrollView>
+        </Container>
     </>
   );
 }
