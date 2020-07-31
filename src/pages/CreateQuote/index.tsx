@@ -25,8 +25,8 @@ import api from '../../services/api';
 
 const CreateQuote = () => {
   const [content, setContent] = useState<string>('');
-  const [author, setAuthor] = useState<string>('');
-  const [complement, setComplement] = useState<string>('');
+  const [author, setAuthor] = useState<string>('Unknown');
+  const [complement, setComplement] = useState<string>('Unknown');
 
   const [opacity] = useState(new Animated.Value(0));
   
