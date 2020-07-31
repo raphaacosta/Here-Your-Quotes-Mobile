@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import { Animated } from 'react-native';
 
-export const Container = styled.View`
+export const Container = styled.KeyboardAvoidingView`
   flex: 1;
   padding: 20px;
 `;
