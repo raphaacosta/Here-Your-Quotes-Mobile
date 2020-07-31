@@ -51,7 +51,7 @@ export const UserName = styled.Text`
 
 export const QuoteBox = styled.TouchableOpacity`
   width: 100%;
-  height: 165px;
+  height: 150px;
   margin-top: 10px;
   border-radius: 8px;
   background-color: #F5E7E0;
@@ -59,7 +59,7 @@ export const QuoteBox = styled.TouchableOpacity`
 
 export const QuoteContent = styled.Text`
   width: 90%;
-  height: 70px;
+  height: 60px;
   left: 10px;
   padding: 10px;
 `;
