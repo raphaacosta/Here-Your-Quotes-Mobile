@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import { Alert, Animated } from 'react-native';
+import { Alert, Animated, Platform } from 'react-native';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
 
@@ -47,7 +47,7 @@ const Detail: React.FC = () => {
     const loadQuote = async () => {
       try{
         const userId = await AsyncStorage.getItem('userId');
-
+        
         const response = await api.get(`/quotes/${routeParams.id}`, {
           headers: {
             Authorization: userId,
@@ -84,7 +84,7 @@ const Detail: React.FC = () => {
 
   const handleSubmitEditedQuote = async () => {
     const userId = await AsyncStorage.getItem('userId');
-    
+
     try {
       await api.put(`quotes/${routeParams.id}`, {
         user_id: userId,
@@ -145,7 +145,7 @@ const Detail: React.FC = () => {
           <DoneIcon name="done" size={24} color="#F5E7E0" />
         </HeaderIcon>
       </Header>
-      <Container>
+      <Container behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
         <QuoteBox style={{ opacity: opacity}}>
           <QuoteIcon onPress={handleDeleteQuote}>
             <TrashIcon name="trash" size={16} color="#A675A1" />
