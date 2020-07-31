@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { RefreshControl, Animated } from 'react-native';
+import React, { useState, useEffect, useRef } from 'react';
+import { Animated, Platform, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -33,15 +33,51 @@ interface Quote{
 const List: React.FC = () => {
   const [quote, setQuote] = useState<Quote[]>([]);
   const [username, setUsername] = useState<string>('');
+  const [search, setSearch] = useState('');
   const [page, setPage] = useState<number>(0);
-  const [isRefreshing, setIsRefreshing] = useState(false);
+
+  const isMountedRef = useRef(false);
 
   const [opacity] = useState(new Animated.Value(0));
   const navigation = useNavigation();
+  
+  useEffect(() => {
+    isMountedRef.current = true;
+
+    if(isMountedRef.current) {
+      loadQuotes();
+    }
+
+    () => isMountedRef.current = false;
+  },[quote]);
 
   useEffect(() => {
-    loadQuotes();
-  },[]);
+    isMountedRef.current = true;
+    
+    if(isMountedRef.current){
+      const handleSearch = async () => {
+        const userId = await AsyncStorage.getItem('userId');
+        
+        try{
+          const response = await api.get(`search?content=${search}`,{
+            headers: {
+              Authorization: userId,
+            }
+          });
+          setQuote(response.data);
+        } catch(err) {
+          Alert.alert("Erro","Erro ao conectar à API",[{
+            text: 'Ok',
+            onPress: () => {},
+          }]);
+        }
+      }
+      
+      handleSearch();
+    }
+    
+    () => isMountedRef.current = false;
+  }, [search]);
 
   useEffect(() => {
     Animated.timing(opacity, {
@@ -51,17 +87,12 @@ const List: React.FC = () => {
     }).start();
   },[]);
 
-  const onRefresh = useCallback(() => {
-    setIsRefreshing(true);
-    loadQuotes();
-    setIsRefreshing(false);
-  }, [isRefreshing]);
-
   const loadQuotes = async () => {
     const userId = await AsyncStorage.getItem('userId');
     const userName = await AsyncStorage.getItem('userName');
 
-    const response = await api.get('quotes', {
+    try{
+      const response = await api.get('quotes', {
       headers: {
         Authorization: userId,
       }
@@ -69,8 +100,14 @@ const List: React.FC = () => {
       setUsername(String(userName));
       setQuote(response.data);
       setPage(page + 1);
+    } catch(err) {
+      Alert.alert("Erro","Falha ao conectar com a API",[{
+       text: 'Ok',
+       onPress: () => {},
+      }])
+    }
   }
-  
+
   const handleLogOff = () => {
     navigation.navigate('Login');
   }
@@ -91,10 +128,15 @@ const List: React.FC = () => {
         </HeaderIcon>
         
         <HeaderBar/>
-        <HeaderInput placeholder="Search..."/>
+        <HeaderInput 
+          placeholder="Search..." 
+          style={Platform.OS === 'ios' ? {paddingTop: 5} : undefined}
+          value={search}
+          onChangeText={setSearch}
+        />
         <HeaderBar/>
 
-        <HeaderIcon onPress={handleLogOff      }>
+        <HeaderIcon onPress={handleLogOff}>
           <Icon name="power-off" size={24} color="#EFD9CE"/>
         </HeaderIcon>
       </Header>
@@ -105,19 +147,13 @@ const List: React.FC = () => {
             style={{
               opacity: opacity,
             }}
-            refreshControl={
-              <RefreshControl 
-                refreshing={isRefreshing}
-                onRefresh={onRefresh}
-              />
-            }
           >
             {quote.map(quotes => (
               <QuoteBox 
                 key={quotes.id}
                 activeOpacity={0.7} 
                 onPress={() => handleNavigateToDetail(quotes.id)}>
-                <QuoteContent  numberOfLines={3} ellipsizeMode='tail'>
+                <QuoteContent  numberOfLines={2} ellipsizeMode='tail'>
                   {quotes.content}
                 </QuoteContent>
                 <QuoteBar />
