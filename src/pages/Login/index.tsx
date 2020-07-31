@@ -82,7 +82,6 @@ const Login: React.FC = () => {
 
         handleNavigateToList();
       } catch (err) {
-        console.log(err);
         return Alert.alert("Erro", "Email ou senha inválidos", [{ text: 'Ok', onPress: () => { } }]);
       }
     }
@@ -113,7 +112,7 @@ const Login: React.FC = () => {
   }
 
   return (
-    <Container style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
+    <Container behavior={Platform.OS === 'ios' ? 'padding' : undefined}>
       <ImgContainer>
         <Animated.Image source={logo} style={{
           opacity: imgOpacity,
