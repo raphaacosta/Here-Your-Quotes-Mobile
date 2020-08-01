@@ -8,17 +8,7 @@
 </h4>
 
 # Screenshots
-<div>
-  <div style="display: flex; flex-direction row; justify-content: center;">
-    <img alt="login-screen" src="./assets/login-screen.png" style="width: 250px; height: 400px;"/>
-    <img alt="create-user-screen" src="./assets/create-user-screen.png" style="width: 250px; height: 400px;"/>
-    <img alt="list-screen" src="./assets/list-screen.png" style="width: 250px; height: 400px;"/>
-  </div>
-  <div style="display: flex; flex-direction: row; justify-content: center;">
-    <img alt="update-quote-screen" src="./assets/update-quote-screen.png" style="width: 250px; height: 400px;"/>
-    <img alt="create-quote-screen" src="./assets/create-quote-screen.png" style="width: 250px; height: 400px;"/>
-  </div>
-</div>
+ If you want to see the screenshots go -> [there](https://github.com/raphaacosta/Here-Your-Quotes-Mobile/tree/master/screenshots)
 
 
 # About project
@@ -41,6 +31,7 @@
  - [Typescript](https://www.typescriptlang.org/)
  - [Styled-Components](https://styled-components.com/)
  - [Axios](https://www.npmjs.com/package/axios)
+ - [ContextApi](https://pt-br.reactjs.org/docs/context.html)
 
 # Installation & Usage
 
