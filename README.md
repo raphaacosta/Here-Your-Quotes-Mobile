@@ -7,6 +7,18 @@
     </a>
 </h4>
 
+# Screenshots
+
+<div style="display: flex; flex-direction row; justify-content: center;">
+  <img alt="login-screen" src="./assets/login-screen.png" style="width: 250px"/>
+  <img alt="create-user-screen" src="./assets/create-user-screen.png" style="width: 250px"/>
+  <img alt="list-screen" src="./assets/list-screen.png" style="width: 250px"/>
+</div>
+<div style="display: flex; flex-direction: row; justify-content: center;">
+  <img alt="update-quote-screen" src="./assets/update-quote-screen.png" style="width: 250px"/>
+  <img alt="create-quote-screen" src="./assets/create-quote-screen.png" style="width: 250px"/>
+</div>
+
 # About project
 
 > I built this app for appling my knowledg of React-Native in practice, to built something with everything i've studied about RN. It's purpose is pretty simple and base on an habit mine, that I take notes of quotes I've heard somewhere, quotes that inpires me, or teach me something, or I just think is cool. In this app, you can do it, take notes of your quotes, edit them, and see them.
@@ -19,7 +31,7 @@
  - [x] Edit Quote
  - [x] Delete Quote
  - [x] List Your Quotes
- - [ ] Search Specific Quote (on going)
+ - [x] Search Specific Quote
 
 # Techs
 
