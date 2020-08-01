@@ -22,7 +22,7 @@ export const Header = styled.View`
 export const HeaderText = styled.Text`
   font-size: 20px;
   color: #F5E7E0;
-  left: -90px;
+  right: 130px;
   font-weight: bold;
   text-align: center;
 `;

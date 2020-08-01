@@ -17,6 +17,10 @@ export const ImgContainer = styled.View`
   margin-top: -100px;
   align-items: center;
   justify-content: center;
+
+  @media (min-width: 500px) {
+    margin-top: -50px;
+  }
 `;
 
 export const InputContainer = styled(Animated.View)`
