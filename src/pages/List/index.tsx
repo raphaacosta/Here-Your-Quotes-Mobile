@@ -1,8 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useContext } from 'react';
 import { Animated, Platform, Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
+import ListContext from '../../contexts/listContext';
 
 import { 
   FontAwesome as Icon, 
@@ -35,6 +36,7 @@ const List: React.FC = () => {
   const [username, setUsername] = useState<string>('');
   const [search, setSearch] = useState('');
   const [page, setPage] = useState<number>(0);
+  const { occurrence } = useContext(ListContext);
 
   const isMountedRef = useRef(false);
 
@@ -44,12 +46,12 @@ const List: React.FC = () => {
   useEffect(() => {
     isMountedRef.current = true;
 
-    if(isMountedRef.current) {
+    if(isMountedRef.current ) {
       loadQuotes();
     }
 
     () => isMountedRef.current = false;
-  },[quote]);
+  },[occurrence]);
 
   useEffect(() => {
     isMountedRef.current = true;
@@ -66,13 +68,13 @@ const List: React.FC = () => {
           });
           setQuote(response.data);
         } catch(err) {
+          console.log(err);
           Alert.alert("Erro","Erro ao conectar à API",[{
             text: 'Ok',
             onPress: () => {},
           }]);
         }
       }
-      
       handleSearch();
     }
     

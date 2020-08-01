@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Alert, Animated } from 'react-native';
 import AsyncStorage from '@react-native-community/async-storage';
+import ListContext from '../../contexts/listContext';
 
 import { FontAwesome as Icon, MaterialIcons as DoneIcon } from '@expo/vector-icons';
 
@@ -27,6 +28,7 @@ const CreateQuote = () => {
   const [content, setContent] = useState<string>('');
   const [author, setAuthor] = useState<string>('Unknown');
   const [complement, setComplement] = useState<string>('Unknown');
+  const { handleChanges } = useContext(ListContext);
 
   const [opacity] = useState(new Animated.Value(0));
   
@@ -54,7 +56,7 @@ const CreateQuote = () => {
         complement,
         user_id: userId,
       });
-      
+      handleChanges();
       Alert.alert(
         "Sucesso",
         "Frase criada com sucesso!!!",

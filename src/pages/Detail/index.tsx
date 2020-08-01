@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { Alert, Animated, Platform } from 'react-native';
 import api from '../../services/api';
 import AsyncStorage from '@react-native-community/async-storage';
+import ListContext from '../../contexts/listContext';
+
 
 import { 
   FontAwesome5 as TrashIcon, 
@@ -36,6 +38,7 @@ const Detail: React.FC = () => {
   const [content, setContent] = useState<string>();
   const [author, setAuthor] = useState<string>();
   const [complement, setComplement] = useState<string>();
+  const { handleChanges } = useContext(ListContext);
 
   const [opacity] = useState(new Animated.Value(0));
 
@@ -92,14 +95,14 @@ const Detail: React.FC = () => {
         author,
         complement,
       });
-      Alert.alert("Prontinho :3", "Frase editada com sucesso", [{
+      handleChanges();
+      Alert.alert("Prontinho", "Frase editada com sucesso", [{
         text: "Ok",
         onPress: () => {
           navigation.goBack();
         }
       }])
     } catch(err) {
-      console.log(err);
       Alert.alert("Erro", "Erro ao editar frase");
     }
   }
@@ -121,8 +124,8 @@ const Detail: React.FC = () => {
                 Authorization: userId,
               }
             });
+            handleChanges();
           } catch(err) { 
-            console.log(err)
             Alert.alert("Erro", "Erro ao deletar frase");
           }
           navigation.navigate('List');
