@@ -10,13 +10,13 @@
 # Screenshots
 
 <div style="display: flex; flex-direction row; justify-content: center;">
-  <img alt="login-screen" src="./assets/login-screen.png" style="width: 250px"/>
-  <img alt="create-user-screen" src="./assets/create-user-screen.png" style="width: 250px"/>
-  <img alt="list-screen" src="./assets/list-screen.png" style="width: 250px"/>
+  <img alt="login-screen" src="./assets/login-screen.png"/>
+  <img alt="create-user-screen" src="./assets/create-user-screen.png"/>
+  <img alt="list-screen" src="./assets/list-screen.png"/>
 </div>
 <div style="display: flex; flex-direction: row; justify-content: center;">
-  <img alt="update-quote-screen" src="./assets/update-quote-screen.png" style="width: 250px"/>
-  <img alt="create-quote-screen" src="./assets/create-quote-screen.png" style="width: 250px"/>
+  <img alt="update-quote-screen" src="./assets/update-quote-screen.png"/>
+  <img alt="create-quote-screen" src="./assets/create-quote-screen.png"/>
 </div>
 
 # About project
